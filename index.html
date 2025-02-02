@@ -3,12 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Restaurants in My City</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .restaurant {
+            margin-bottom: 40px;
+        }
+        .restaurant h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .map {
+            margin-top: 20px;
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
-    <h1>Welcome !</h1>
-    <p>This is a simple website hosted using GitHub Pages.</p>
-    <p>Ce site vise à énumérer l'ensemble des restaurants et cafés proposant de la nourriture Halal.</p>
+
+    <header>
+        <h1>Restaurants in My City</h1>
+    </header>
+
+    <div class="container">
+        <!-- Introduction Section -->
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+                Welcome to my blog about the best restaurants in my city! Whether you're a local or just visiting, 
+                this guide will help you discover some of the most delicious and unique dining experiences 
+                that our city has to offer. From cozy cafes to fine dining, there's something for everyone.
+            </p>
+        </section>
+
+        <!-- Restaurants Section -->
+        <section id="restaurants">
+            <h2>Restaurants I Will Be Talking About</h2>
+
+            <!-- Restaurant 1 -->
+            <div class="restaurant">
+                <h3>1. The Gourmet Kitchen</h3>
+                <p>
+                    The Gourmet Kitchen is a must-visit for anyone who loves modern cuisine with a twist. 
+                    Located in the heart of the city, this restaurant offers a diverse menu that changes 
+                    with the seasons, ensuring that every visit is a unique experience.
+                </p>
+                <p>
+                    <strong>Specialties:</strong> Seasonal tasting menu, locally sourced ingredients.
+                </p>
+                <!-- Map for The Gourmet Kitchen -->
+                <div id="map1" class="map"></div>
+            </div>
+
+            <!-- Restaurant 2 -->
+            <div class="restaurant">
+                <h3>2. Bella Italia</h3>
+                <p>
+                    Bella Italia brings the flavors of Italy to our city. Known for its authentic Italian dishes, 
+                    this restaurant is perfect for a romantic dinner or a family gathering. Their handmade pasta 
+                    and wood-fired pizzas are particularly popular.
+                </p>
+                <p>
+                    <strong>Specialties:</strong> Handmade pasta, wood-fired pizzas, tiramisu.
+                </p>
+                <!-- Map for Bella Italia -->
+                <div id="map2" class="map"></div>
+            </div>
+
+            <!-- Restaurant 3 -->
+            <div class="restaurant">
+                <h3>3. The Green Leaf Cafe</h3>
+                <p>
+                    If you're looking for a healthy and eco-friendly dining option, The Green Leaf Cafe is the place to go. 
+                    This cafe focuses on organic, plant-based meals that are as good for the planet as they are for your body.
+                </p>
+                <p>
+                    <strong>Specialties:</strong> Vegan burgers, fresh smoothies, organic salads.
+                </p>
+                <!-- Map for The Green Leaf Cafe -->
+                <div id="map3" class="map"></div>
+            </div>
+
+            <!-- Add more restaurants as needed -->
+        </section>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize maps for each restaurant
+        document.addEventListener("DOMContentLoaded", function() {
+            // Map 1: The Gourmet Kitchen
+            const map1 = L.map('map1').setView([51.505, -0.09], 15); // Replace with actual coordinates
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map1);
+            L.marker([51.505, -0.09]).addTo(map1) // Replace with actual coordinates
+                .bindPopup('The Gourmet Kitchen')
+                .openPopup();
+
+            // Map 2: Bella Italia
+            const map2 = L.map('map2').setView([51.51, -0.1], 15); // Replace with actual coordinates
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map2);
+            L.marker([51.51, -0.1]).addTo(map2) // Replace with actual coordinates
+                .bindPopup('Bella Italia')
+                .openPopup();
+
+            // Map 3: The Green Leaf Cafe
+            const map3 = L.map('map3').setView([51.515, -0.08], 15); // Replace with actual coordinates
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map3);
+            L.marker([51.515, -0.08]).addTo(map3) // Replace with actual coordinates
+                .bindPopup('The Green Leaf Cafe')
+                .openPopup();
+        });
+    </script>
+
 </body>
 </html>
